@@ -1,0 +1,8 @@
+/.idea/
+/node_modules/
+/.vscode/
+/egret/bin-debug/
+/egret/bin-release/
+/dist/
+/package-lock.json
+.history
