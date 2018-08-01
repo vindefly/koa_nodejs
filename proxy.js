@@ -7,6 +7,7 @@ var proxy = httpProxy.createProxyServer({});
 //     });
 // });
 var server = require('http').createServer(function (req, res) {
+    console.log(req.headers)
     var host = req.headers.host;
     switch (host) {
         case 'www.5shishang.com':
@@ -16,6 +17,11 @@ var server = require('http').createServer(function (req, res) {
         case 'shop.5shishang.com':
             proxy.web(req, res, {
                 target: 'http://127.0.0.1:3019'
+            });
+            break;
+        case 'jk.5shishang.com'://jenkins
+            proxy.web(req, res, {
+                target: 'http://127.0.0.1:8081'
             });
             break;
         default:
