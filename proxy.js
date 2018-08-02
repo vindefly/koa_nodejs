@@ -29,5 +29,5 @@ var server = require('http').createServer(function (req, res) {
             res.end('Welcome to my server!');
     }
 });
-console.log("listening on port 80");
+// console.log("listening on port 80");
 server.listen(80);
