@@ -1,45 +1,42 @@
-const router = require("koa-router")();
+const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser');
-const promised = require("fs.promised");
-const viewsFile = "/views";
+const myrequest = require('./modules/base');
+let myRequest = new myrequest();
 
-const getUrl = function (app) {
+module.exports = function (app) {
+    const router = new Router();
     app.use(bodyParser());
     app.use(router.routes());
+    app.use(router.allowedMethods());
 
-    const readFile = (path, ascCode) => {
-        return new Promise((resolve, reject) => {
-            promised.readFile(path, ascCode, (err, data) => {
-                if (err) {
-                    resolve(`<div style="color: #f00; font-size: 100px; text-align: center; color: #aaa; line-height: 300px;">错误页面</div>`);
-                } else {
-                    resolve(data)
-                }
-            })
-        })
-    };
+    router.get('/', async (ctx, next) => {
+        let resData = {};
+        let data = {};
 
-    const asyncPage = async (ctx, next) => {
-        ctx.response.type = 'html';//指定content type
-        let templateUrl = "";
-        for (let i in ctx.params) {
-            templateUrl += "/" + ctx.params[i]
+        data = await myRequest.post('/be/newinfo.api', {p: 310101});
+        if (data.success) {
+            resData.data = data;
+            console.log("data==", data);
         }
-        console.info('views' + templateUrl);
-        ctx.response.body = await readFile('.' + viewsFile + templateUrl, 'utf-8');
+
+        resData.base = {
+            title: '案例页',
+            self: 'cases',
+        };
+
+        ctx.body = await ctx.render('index.html', resData);
+    });
+
+    let asyncPage = async (ctx, next) => {
+        let _htmlUrl = ctx.request.url.replace("/views/", "");
+        ctx.body = await ctx.render(_htmlUrl, {title: "111"});
     };
 
-    router.get('/', async (cxt, next) => {
-        cxt.response.redirect(viewsFile + "/index.html");
-    });
-    //
+    const viewsFile = "/views";
+
     router.get(viewsFile + '/:page0', asyncPage);
     router.get(viewsFile + '/:page0/:page1', asyncPage);
     router.get(viewsFile + '/:page0/:page1/:page2', asyncPage);
     router.get(viewsFile + '/:page0/:page1/:page2/:page3', asyncPage);
     router.get(viewsFile + '/:page0/:page1/:page2/:page3/:page4', asyncPage);
-};
-
-module.exports = {
-    getUrl: getUrl
 };

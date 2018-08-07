@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>list</title>
-</head>
-<body>
-list page
-</body>
-</html>
+{% set title = '首页' %}
+{% set css = ['/public/css/index.css'] %}
+{% set js = ['/public/css/index.css'] %}
+{% extends 'template/layout.html' %}
+{% block head %}
+    <link href='/public/css/index.css' rel='stylesheet' type='text/css' charset='utf-8'/>
+{% endblock %}
+
+{% block body %}
+    <h1>List Header</h1>
+{% endblock %}
+

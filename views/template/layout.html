@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% set htmlAttr = '' %}
+<html lang="en" {{ htmlAttr }}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>{{ title | 'NodeJS Template'}}</title>
+    <script type="text/javascript" src="/public/index.js"></script>
+    {% block head %}
+    <!--head html-->
+    {% endblock %}
+</head>
+{% set bodyAttr = '' %}
+<body {{ bodyAttr }}>
+    {% block body %}
+    <!--body html-->
+    {% endblock %}
+</body>
+</html>

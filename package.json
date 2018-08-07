@@ -4,18 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "supervisor node app",
     "start": "node app.js"
   },
   "author": "yifie.peng",
   "dependencies": {
-    "7": "0.0.1",
-    "fs.promised": "^3.0.0",
+    "co": "^4.6.0",
     "http-proxy": "^1.17.0",
-    "koa": "^2.5.1",
+    "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.0",
+    "koa-route": "^3.2.0",
     "koa-router": "^7.4.0",
-    "koa-static": "^4.0.2"
+    "koa-static": "^4.0.2",
+    "koa-swig": "^2.2.1",
+    "lodash": "^4.17.10",
+    "path": "^0.12.7",
+    "request": "^2.87.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "supervisor": "^0.12.0"
+  }
 }
