@@ -15,7 +15,7 @@ module.exports = function (app) {
 
         data = await myRequest.post('/be/newinfo.api', {p: 310101});
         if (data.success) {
-            resData.data = data;
+            resData.data = JSON.stringify(data);
             console.log("data==", data);
         }
 

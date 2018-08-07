@@ -24,7 +24,7 @@ gulp.task('js', function () {
         .pipe(loadPlugins.browserify({
             transform: ['babelify']
         }))
-        // .pipe(loadPlugins.buffer())
+        .pipe(loadPlugins.buffer())
         // .pipe(loadPlugins.uglify())
         .pipe($.sourcemaps.write("/"))
         .pipe(gulp.dest(app.devPath));
