@@ -7,7 +7,7 @@ const path = require('path');
 const controller = require("./controller/router");
 const port = 3019;
 
-app.use(koaStatic(path.join(__dirname, "static"), {
+app.use(koaStatic(path.join(__dirname, "build-repo/build-test/static"), {
     extensions: ['html', 'js']
 }));
 
