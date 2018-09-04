@@ -36,13 +36,3 @@ mkdir -p $create_svn_file
 # 同步到svn 文件夹
 cp -rf $DIR/{dist,config,controller,views,app.js,gulpfile.js,package.json} $create_svn_file
 # rsync -rtvlpgozDP --delete --exclude .git $DIR/{dist,config,controller,views,app.js,gulpfile.js,package.json, proxy.js} $create_svn_file
-
-maxNode=2
-
-PM2_PARAMS="--log-date-format 'YYYY-MM-DD HH:mm:ss' --no-color --output /dev/null"
-
-if [ "$type" = "start" ]; then
-    pm2 start app.js $PM2_PARAMS -i $maxNode
-else
-    pm2 restart all $PM2_PARAMS
-fi
