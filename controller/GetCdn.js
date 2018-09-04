@@ -2,7 +2,7 @@ const cdn_json = {
     dev: '',
     test: '',
     staging: '',
-    production: ''
+    production: 'https://cdn-cnc.ustalk.com/'
 }
 
 const getCdn = {
@@ -15,11 +15,7 @@ const getCdn = {
         } else if (url.startsWith('s17/') || url.startsWith('/s17')) {
             return this.get_cdn_url(url);
         } else {
-            if (process.env.NODE_ENV == "dev") {
-                return "/" + url;
-            } else {
-                return this.get_cdn_url(url);
-            }
+            return "/" + url;
         }
     }
 }
