@@ -8,7 +8,7 @@ stage=$1
 build_repo="build-repo"
 output_dirname="build-test"
 
-DIR=G:/17FrameProduced/koa_nodejs
+DIR=/var/lib/jenkins/workspace/17xue-frontend
 cd $DIR
 
 # 安装 package
