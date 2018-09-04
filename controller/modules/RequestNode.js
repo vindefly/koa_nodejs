@@ -5,7 +5,7 @@ const requestDomain = require('./RequestDomain');
 const requestNode = {
     get(url, data, callback) {
         data = data || {};
-        let baseHttp = requestDomain[data.domainName || 'xue'][process.env.NODE_ENV == "dev" ? 'test' : process.env.NODE_ENV];
+        let baseHttp = requestDomain[process.env.NODE_ENV == "dev" ? 'test' : process.env.NODE_ENV];
         return new Promise(function (resolve, reject) {
             let myUrl = `${baseHttp}${url}?`;
             let dataArray = [];
@@ -39,7 +39,7 @@ const requestNode = {
     post(url, data) {
         data = data || {};
         return new Promise(function (resolve, reject) {
-            let baseHttp = requestDomain[data.domainName || 'xue'][process.env.NODE_ENV == "dev" ? 'test' : process.env.NODE_ENV];
+            let baseHttp = requestDomain[process.env.NODE_ENV == "dev" ? 'test' : process.env.NODE_ENV];
             // console.log(`${baseHttp}${url}`)
             request.post({
                 url: `${baseHttp}${url}`,
