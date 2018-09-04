@@ -1,8 +1,8 @@
 const cdn_json = {
-    dev: 'https://cdn-static-shared.test.17zuoye.net/',
-    test: 'https://cdn-static-shared.test.17zuoye.net/',
-    staging: 'https://cdn-cnc.staging.17zuoye.net/',
-    production: 'https://cdn-cnc.ustalk.com/'
+    dev: '',
+    test: '',
+    staging: '',
+    production: ''
 }
 
 const getCdn = {
@@ -18,7 +18,7 @@ const getCdn = {
             if (process.env.NODE_ENV == "dev") {
                 return "/" + url;
             } else {
-                return this.get_cdn_url('s17/xuestatic/static/' + url);
+                return this.get_cdn_url(url);
             }
         }
     }
