@@ -1,0 +1,33 @@
+{% set css_page_list = [
+        'plugins/bootstrap/bootstrap.min.css', 
+        'resources/login/css/login.css'
+    ]
+%} 
+
+{% set js_foot_list = [
+    'resources/login/main.js'
+] %}
+
+{% set body_attr = 'class="text-center"'%}
+
+{% set model_js_type = 'vue''%}
+
+{% extends 'template/layout.html' %}
+
+{% block head %}<!-- head code -->{% endblock %} 
+
+{% block body %}
+<div id="app_content" style="width: 100%; text-align: center">
+    <form class="form-signin" action="/views/index.vpage" id="LoginForm" method="get">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label class="sr-only">Username</label>
+        <input type="text" class="form-control" placeholder="username" v-model='username'>
+
+        <label class="sr-only">Password</label>
+        <input type="password" class="form-control" v-model='password' placeholder="Password">
+        <div class="checkbox mb-3">${errorInfo}$ &nbsp;</div>
+        <button class="btn btn-lg btn-primary btn-block" type="button" @click="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+    </form>
+</div>
+{% endblock %}

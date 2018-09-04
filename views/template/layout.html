@@ -1,23 +1,48 @@
+<!-- set html_attr = '' -->
+<!-- set body_attr = '' -->
+<!-- set model_js_type = true -->
+<!-- set css_page_list = [] -->
+<!-- set js_page_list = [] -->
+{% import './model.html' as model %}
 <!DOCTYPE html>
-{% set htmlAttr = '' %}
-<html lang="en" {{ htmlAttr }}>
+<html lang="zh" {{ html_attr }}>
 <head>
+    <title>{{ title | 'NodeJS Template'}}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="format-detection" content="telephone=no" />
     <meta name="format-detection" content="email=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <title>{{ title | 'NodeJS Template'}}</title>
-    <script type="text/javascript" src="/public/index.js"></script>
-    {% block head %}
-    <!--head html-->
-    {% endblock %}
+    <link rel="icon" href="{{get_static_file('resources/images/favicon.ico')}}" type="image/x-icon">
+    {% spaceless %}
+    {{ model.get_base_env_config() }}
+
+    {{ model.set_script_tags('s17/??lib/jquery/2.1.4/seed.min.js') }}
+
+    {{ model.set_script_tags('resources/common/tools.js') }}
+
+    {% if model_js_type === 'vue' %}
+        {{ model.set_script_tags('s17/??lib/vue/2.2.1/seed.min.js,lib/vue/plugin/vuex/2.3.1/seed.min.js') }}
+    {% elseif model_js_type === 'ko' %}
+        {{ model.set_script_tags('s17/lib/knockout/3.3.0/dist/knockout.min.js') }}
+    {% endif %}
+
+    {% for i in css_page_list %}
+        {{ model.set_css_tags(i) }}
+    {% endfor %}
+
+    {% for i in js_head_list %}
+        {{ model.set_script_tags(i) }}
+    {% endfor %}
+
+    {% block head %}<!--head html-->{% endblock %}
+    {% endspaceless %}
 </head>
-{% set bodyAttr = '' %}
-<body {{ bodyAttr }}>
-    {% block body %}
-    <!--body html-->
-    {% endblock %}
+<body {{ body_attr }}>
+{% block body %}
+<!--body html-->
+{% endblock %}
+{% for i in js_foot_list %}<script type="text/javascript" src="{{get_static_file(i)}}"></script>{% endfor %}
 </body>
 </html>

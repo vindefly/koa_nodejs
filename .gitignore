@@ -1,3 +1,10 @@
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+**/node_modules
+/config/env.json
 /.idea/
 /node_modules/
 /.vscode/
@@ -5,5 +12,17 @@
 /egret/bin-release/
 /dist/
 /package-lock.json
+/yran-lock.json
+.vscode
 .history
 /build-repo
+/sapp
+/views/sapp
+/update_log.json
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride

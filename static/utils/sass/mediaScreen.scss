@@ -1,0 +1,61 @@
+$baseFontUnit : rem; //set mobile app
+html {
+  font-size: 18px !important;
+}
+@media only screen and (min-width: 360px) {
+  html {
+    font-size: 20px !important;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  html {
+    font-size: 21px !important;
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  html {
+    font-size: 22px !important;
+  }
+}
+
+@media only screen and (min-width: 414px) {
+  html {
+    font-size: 23px !important;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  html {
+    font-size: 24px !important;
+  }
+}
+
+@media only screen and (min-width: 540px) {
+  html {
+    font-size: 26px !important;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  html {
+    font-size: 28px !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 32px !important;
+  }
+}
+@media only screen and (min-width: 960px) {
+  html {
+    font-size: 36px !important;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  html {
+    font-size: 46px !important;
+  }
+}

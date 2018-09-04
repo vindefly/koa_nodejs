@@ -1,0 +1,74 @@
+$baseFontSize : 42; //default size 40px  || 72
+$baseFontUnit : rem; //default unit px
+
+// 自动转换单位
+@function px2rem($px) {
+	@if($baseFontUnit == "app_px") {
+		@return $px / $baseFontSize + px;
+	}
+	@else if($baseFontUnit == "rpx") {
+		@return $px + $baseFontUnit;
+	}
+	@else if($baseFontUnit == "rem") {
+		@return $px / $baseFontSize + $baseFontUnit;
+	}
+	@else {
+		@return $px + $baseFontUnit;
+	}
+}
+
+// 初始外边距与内边距
+@mixin padMarDefault {
+	margin: 0;
+	padding: 0;
+}
+
+// 内容垂直居中
+@mixin alignMiddle {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+// 文字不换行-缩略
+@mixin textOverflow {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+// 图标列表
+@mixin iconItems($name, $count, $size, $form) {
+	@for $i from 0 through $count {
+		#{$name}-#{$i} {
+			@if($form == "x") {
+				background-position: pxToRem($size * $i) 0;
+			}@else {
+				background-position: 0 pxToRem($size * $i);
+			}
+		}
+	}
+}
+
+// 文字描边
+@mixin textShadow($size, $color) {
+	-webkit-text-shadow: $size 0 0 $color, (-$size) 0 0 $color, 0 $size 0 $color, 0 (-$size) 0 $color;
+	-moz-text-shadow: $size 0 0 $color, (-$size) 0 0 $color, 0 $size 0 $color, 0 (-$size) 0 $color;
+	text-shadow: $size 0 0 $color, (-$size) 0 0 $color, 0 $size 0 $color, 0 (-$size) 0 $color;
+}
+
+// 公用提示弹层
+@mixin layerProm($padSize,$color,$fontSize,$lineHei,$borRad,$minWid,$maxWid) {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	padding: $padSize;
+	min-width: $minWid;
+	max-width: $maxWid;
+	text-align: center;
+	color: $color;
+	font-size: $fontSize;
+	line-height: $lineHei;
+	background-color: rgba(0,0,0,0.7);
+	border-radius: $borRad;
+}

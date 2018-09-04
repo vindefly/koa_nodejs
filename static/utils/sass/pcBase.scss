@@ -1,0 +1,180 @@
+@charset "utf-8";
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body, input, select, button, textarea {
+  font-family: TrebuchetMS, Rotobo, "Microsoft YaHei", sans-serif;
+}
+
+html, body, form, p, h1, h2, h3, h4, h5, h6, dl, ul, ol, li, dt, dd, select {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol, li {
+  list-style-type: none;
+}
+
+em, i {
+  font-style: normal;
+}
+
+a{
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+a img {
+  border: 0 none;
+}
+
+input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-placeholder {
+  color: #999;
+}
+
+input:focus::-webkit-input-placeholder, input:focus::-moz-placeholder, input:focus:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0);
+}
+
+input[type="button"],textarea, input[type="text"], input[type="password"], input[type="submit"], input[type="search"], input[type="email"], input[type="number"], input[type="phone"], button, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-border-image: none;
+  border-image: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/*
+ * 1. 显示手形光标，表示可以点击的表单元素
+ * 2. 允许 iOS 中可点击的表单元素的样式
+ */
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+/*
+ * 删除 FF3/4 中的内边距和边框: h5bp.com/l
+ */
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+  outline: none;
+}
+
+/* =============================================================================
+   表格
+   ========================================================================== */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td {
+  vertical-align: top;
+}
+
+/* 同时在屏幕读取器和浏览器中隐藏: h5bp.com/u */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/* 仅可视隐藏，但在屏幕读取器中可用: h5bp.com/v */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* 扩展 .visuallyhidden 类以允许元素可在通过键盘浏览时成为焦点:*/
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/* 可视隐藏且在屏幕读取器中隐藏，但保留布局 */
+.invisible {
+  visibility: hidden;
+}
+
+/* 包含浮动: */
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+  /* 黑白打印速度更快 */
+  a, a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+  /* 不显示图像链接或 javascript/内部链接 */
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr, img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  @page {
+    margin: 0.5cm;
+  }
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}

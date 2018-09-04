@@ -1,0 +1,35 @@
+{% macro get_base_env_config %}
+    <script type="text/javascript">
+        var voxExamOp = {
+            domain : '{{ get_domain }}',
+            examEnv: '{{ get_env }}',
+            cdnDomain : '{{ get_cdn_url() }}'
+        };
+    </script>
+{% endmacro %}
+
+{% macro set_script_tags(src) %}
+    <script src="{{get_static_file(src)}}" type="text/javascript"></script>
+{% endmacro %}
+
+{% macro set_css_tags(src) %}
+    <link href="{{get_static_file(src)}}" rel='stylesheet' type='text/css' charset='utf-8'></link>
+{% endmacro %}
+
+
+{% macro get_map_string(jsonData) %}
+{% spaceless %}
+    {% set index = -1%}
+    {
+        {% for key in jsonData %}{% set index += 1 %}{{index}} : "{{key}}",
+        {% endfor %}
+    }
+{% endspaceless %}
+{% endmacro %}
+
+
+{% macro toHtml(str) %}
+{% spaceless %}
+    {% autoescape %}{{ str }}{% endautoescape %}
+{% endspaceless %}
+{% endmacro %}

@@ -1,0 +1,10 @@
+{% import './model.html' as model %}
+{% if env.isDev || env.isTest || env.isStaging %}
+{{ model.set_script_tags('s17/??lib/eruda/1.3.0/seed.min.js') }}
+<!-- https://github.com/liriliri/eruda/issues/57 -->
+<script type="text/javascript">
+   document.addEventListener("DOMContentLoaded", function(){
+       try{window.eruda.init();}catch(e){};
+   });
+</script>
+{% endif %}

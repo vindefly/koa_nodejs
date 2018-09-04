@@ -1,24 +1,64 @@
-{% set title = '首页' %}
-{% set css = ['/public/css/index.css'] %}
-{% set js = ['/public/css/index.css'] %}
+{% set model_js_type = 'ko' %}
+{% set css_page_list = [
+        'plugins/bootstrap/bootstrap.min.css'
+    ]
+%} 
+
+{% set js_foot_list = ['resources/login/index.js'] %}
+
+{% set title = '一起学云课堂' %}
+
 {% extends 'template/layout.html' %}
-{% block head %}
-    <link href='/public/css/index.css' rel='stylesheet' type='text/css' charset='utf-8'/>
-{% endblock %}
 
 {% block body %}
-    <h1>Index</h1>
-    {{ data }}
-    <form action="/views/list.html" method="get">
-        <p>Name: <input name="name"></p>
-        <p>Password: <input name="password" type="password"></p>
-        <p><input type="submit" value="Submit"></p>
-    </form>
-    <a href="/views/page/name.html">name.html</a>
+<style>
+    body{background: #f8f9fa;}
+</style>
+<header>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+            <a href="https://www.17xueba.com" target="_blank" id="openLink" data-bind="click: openLink.bind()" class="navbar-brand d-flex align-items-center">
+                <strong data-bind="text: btnName">17zuoye</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bind="click: logout.bind()" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
 
-    <img src="/public/close.png" >
-    <script type="text/javascript">
-        console.info(navigator.userAgent)
-    </script>
+<main role="main">
+    <div class="album py-4">
+        <div class="container">
+            <div class="row">
+            {% if !env.isProd %}
+                {% for item in router_data %}
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <a href="/views/{{loop.key.replace('.html', '.vpage')}}" target="_blank">
+                                <p class="card-text">/views/{{loop.key.replace('.html', '.vpage')}}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    </div>
+                                    <small class="text-muted">views html</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div>index</div>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript">
+    var router_data = {{ model.toHtml(router_data|json_encode) }}
+</script>
 {% endblock %}
-

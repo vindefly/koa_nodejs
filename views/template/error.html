@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<style>
+    html, body{ padding: 0; margin: 0;}
+</style>
+<div style="padding: 100px 0 0; text-align: center; font-size: 30px; color: #999; background: #fefefe;">
+    {{ model.toHtml(error) }};
+</div>
+{% endblock %}

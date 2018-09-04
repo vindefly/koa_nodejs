@@ -1,0 +1,19 @@
+{% set css_page_list = ['resources/auth/main.css'] %}
+{% set js_foot_list = ['resources/auth/main.js'] %}
+{% set title = "登录/注册"" %} 
+{% extends '../template/layout.html' %}
+{% block body %}
+<div id="app_content" style="width: 100%;">
+    <div class="registerPage">
+        <div class="prompt">请输入您常用的手机号，进行登录／注册</div>
+        <div class="form clearfix">
+            <input class="input-txt phone" type="tel" placeholder="请输入您的手机号" data-bind="value: mobile, valueUpdate: 'keyup'">
+        </div>
+        <button class="registerButton" data-bind="attr: { disabled: !checked() }, event: { 'touchend click': checkmobile }">一键登录／注册</button>
+        <div class="agreement clearfix">
+            <i class="icon fl on"></i>
+            我同意 <a class="link" href="/public/static/agreement-phone.html">《一起学用户登录注册协议》</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
