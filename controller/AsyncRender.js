@@ -110,7 +110,7 @@ const _reader = {
         }
     },
     async updateStaticReader(ctx) {
-        if (ctx.query.key === "AAAAB3NzaC1yc2EAAAADAQABAAABAQCh7/hNLlyS6u6IgF5f") {
+        if (ctx.query.key === "1111") {
             ctx.response.status = 200;
             if (!fs.existsSync(path.join(__dirname, '../update_log.json'))) {
                 var w_data = '{"update": ' + Date.now() + '}';
