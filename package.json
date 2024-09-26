@@ -35,7 +35,7 @@
     "koa-swig": "=2.2.1",
     "mime": "=2.3.1",
     "request": "=2.87.0",
-    "rollup": "=0.64.1",
+    "rollup": "=2.79.2",
     "rollup-plugin-babel": "=3.0.7",
     "run-sequence": "=2.2.1",
     "vinyl-buffer": "=1.0.1"
